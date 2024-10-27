@@ -1,0 +1,17 @@
+[package]
+name = "clogger"
+version = "0.1.0"
+edition = "2021"
+authors = ["Dirk Faust <dirk@faustbande.de>"]
+description = "A scanning docker container-log monitoring tool"
+
+[dependencies]
+anyhow = "1.0.91"
+chrono = "0.4.38"
+clap = { version = "4.5.20", features = ["derive", "wrap_help"] }
+clap_derive = "4.5.18"
+colored = "2.1.0"
+docker-api = "0.14.0"
+futures-util = "0.3.31"
+humantime = "2.1.0"
+tokio = { version = "1.41.0", features = ["macros", "rt-multi-thread", "fs"] }
