@@ -17,7 +17,7 @@ async fn main() -> Result<()> {
     let query = FindQuery::new(search);
     let log = LogFilter::new(config.keywords.as_ref());
 
-    let docker = docker_api::Docker::new(&config.docker_socket).unwrap();
+    let docker = docker_api::Docker::new(&config.docker_socket)?;
     let containers = docker_api::Containers::new(docker);
     let list_opts = docker_api::opts::ContainerListOpts::builder().all(true).build();
     loop {
