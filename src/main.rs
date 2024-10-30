@@ -1,3 +1,5 @@
+use std::io::Write;
+
 use anyhow::Result;
 use colored::Colorize;
 
@@ -6,6 +8,13 @@ use clogger::{
     logprinter::{consume_logs, print_now},
     FindQuery, LogFilter,
 };
+
+fn print_stats(count: usize) {
+    print!("\r");
+    print_now();
+    print!("scanning... {} containers found", count);
+    std::io::stdout().flush().ok();
+}
 
 #[tokio::main]
 async fn main() -> Result<()> {
@@ -22,8 +31,10 @@ async fn main() -> Result<()> {
     let list_opts = docker_api::opts::ContainerListOpts::builder().all(true).build();
     loop {
         let c = containers.list(&list_opts).await?;
+        print_stats(c.len());
         for item in c {
             if query.is_match(&item) {
+                println!(" \\o/");
                 print_now();
                 println!(
                     "Found container {} from {}",
