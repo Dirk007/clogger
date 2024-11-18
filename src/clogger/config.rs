@@ -10,6 +10,8 @@ pub struct Config {
     /// Display a tiling-line if the log pauses for more than 2 seconds
     #[arg(short, long, default_value_t = false)]
     pub time_tile: bool,
+    #[arg(short, long, default_value_t = false)]
+    pub no_display_time: bool,
     /// Keywords to highlight in the log output, seperated by commas
     #[arg(short, long, value_delimiter = ',', required = false)]
     pub keywords: Vec<String>,
