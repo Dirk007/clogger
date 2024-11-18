@@ -10,6 +10,7 @@ pub struct Config {
     /// Display a tiling-line if the log pauses for more than 2 seconds
     #[arg(short, long, default_value_t = false)]
     pub time_tile: bool,
+    /// Do not display the current time in the log output
     #[arg(short, long, default_value_t = false)]
     pub no_display_time: bool,
     /// Keywords to highlight in the log output, seperated by commas
